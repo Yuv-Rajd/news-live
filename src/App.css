@@ -1,0 +1,66 @@
+@media (max-width: 993px) {
+  .shrink {
+    display: none;
+  }
+}
+
+.card {
+  background: rgb(247, 247, 247) fff;
+}
+#root {
+  background: rgb(236, 236, 236);
+}
+.card:hover {
+  background: #ffffff;
+}
+.main {
+  margin: 80px 0 0 0;
+}
+
+.box {
+  border: 1px solid rgb(105, 105, 105);
+  background: #f4f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  border-radius: 60px;
+  margin: 5px 20px 1px 20px;
+  width: auto;
+}
+.box2 {
+  background: #ffff04;
+  display: flex;
+  padding: 0px 2px;
+  justify-content: center;
+  border-radius: 60px;
+  align-items: center;
+  margin: 5px 20px 1px 20px;
+  background: linear-gradient(145deg, #498df9, #1563ff);
+  color: white;
+}
+.box2:hover {
+  cursor: pointer;
+}
+.box:hover {
+  cursor: pointer;
+}
+.stick {
+  position: sticky;
+  top: 0;
+}
+.BottomRow {
+  /* background: #000; */
+  /* overflow: scroll; */
+}
+.sticky {
+  position: fixed;
+  top: 120px;
+  left: 20px;
+}
+.sticky2 {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: fit-content;
+}

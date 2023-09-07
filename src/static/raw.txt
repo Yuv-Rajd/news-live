@@ -1,0 +1,105 @@
+import React, { useState } from 'react';
+
+const NewsApp = () => {
+  // Sample news data with categories
+  const newsData = [
+    {
+      title: 'News 1',
+      category: 'Category A',
+      content: 'Lorem ipsum dolor sit amet...',
+      image: 'image-url-1.jpg'
+    },
+    {
+      title: 'News 2',
+      category: 'Category B',
+      content: 'Lorem ipsum dolor sit amet...',
+      image: 'image-url-2.jpg'
+    },
+    // Add more news items here
+  ];
+
+  // Method 1: Filter News by Category
+  const [selectedCategory, setSelectedCategory] = useState(''); // State to track selected category
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredNews = selectedCategory
+    ? newsData.filter((news) => news.category === selectedCategory)
+    : newsData;
+
+  // Method 2: Separate News by Category
+  const categorizedNews = newsData.reduce((acc, news) => {
+    if (acc[news.category]) {
+      acc[news.category].push(news);
+    } else {
+      acc[news.category] = [news];
+    }
+    return acc;
+  }, {});
+
+  // Method 3: Mapping over Categories and News
+  const categories = Array.from(new Set(newsData.map((news) => news.category)));
+
+  return (
+    <div>
+      {/* Method 1: Filter News by Category */}
+      <div>
+        <h2>Method 1: Filter News by Category</h2>
+        <div>
+          {categories.map((category) => (
+            <button key={category} onClick={() => handleCategorySelect(category)}>
+              {category}
+            </button>
+          ))}
+        </div>
+        <div>
+          {filteredNews.map((news) => (
+            <div key={news.title}>
+              <h3>{news.title}</h3>
+              <p>{news.content}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Method 2: Separate News by Category */}
+      <div>
+        <h2>Method 2: Separate News by Category</h2>
+        {Object.entries(categorizedNews).map(([category, newsList]) => (
+          <div key={category}>
+            <h3>{category}</h3>
+            {newsList.map((news) => (
+              <div key={news.title}>
+                <h4>{news.title}</h4>
+                <p>{news.content}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Method 3: Mapping over Categories and News */}
+      <div>
+        <h2>Method 3: Mapping over Categories and News</h2>
+        {categories.map((category) => (
+          <div key={category}>
+            <h3>{category}</h3>
+            {newsData
+              .filter((news) => news.category === category)
+              .map((news) => (
+                <div key={news.title}>
+                  <h4>{news.title}</h4>
+                  <p>{news.content}</p>
+                </div>
+              ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default NewsApp;
+https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=600
