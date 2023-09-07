@@ -65,7 +65,7 @@ function App() {
               }
             />
           </div>
-          <div className="col col-lg-8 col-md-12  ">
+          <div className="col col-lg-6 col-md-12  ">
             <div className="sticky3">
               <Carousel responsive={responsive} ref={carouselRef}>
                 {Category.map((cat) => {
